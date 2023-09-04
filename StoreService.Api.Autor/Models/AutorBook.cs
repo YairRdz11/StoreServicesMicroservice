@@ -6,5 +6,7 @@
         public string Name { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthdate { get; set; }
+        public ICollection<AcademicGrade> AcademicGradeList { get; set; }
+        public string AutorBookGuid { get; set; }
     }
 }
