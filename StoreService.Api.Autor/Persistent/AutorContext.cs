@@ -9,5 +9,10 @@ namespace StoreService.Api.Autor.Persistent
 
         public DbSet<AutorBook> AutorBook { get; set; }
         public DbSet<AcademicGrade> AcademicGrade { get; set; }
+
+        internal Task<AutorBook> FirstOrDefaultAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

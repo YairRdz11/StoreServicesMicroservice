@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreService.Api.Autor.Application;
 using StoreService.Api.Autor.Models;
@@ -24,9 +23,34 @@ namespace StoreService.Api.Autor.Controllers
         }
 
         [HttpGet]
-        public async Task<List<AutorBook>> Get()
+        public async Task<ActionResult<List<AutorBook>>> Get()
         {
-            return await _mediator.Send(new Query.AutorList());
+            try
+            {
+                return await _mediator.Send(new Query.AutorList());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
+
+        [HttpGet("{guidId}")]
+        public async Task<ActionResult<AutorBook>> Get(string guid)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(guid))
+                {
+                    throw new ArgumentNullException(nameof(guid));
+                }
+                return await _mediator.Send(new QueryFilter.AutorUnique { AutorBookGuid = guid});
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }
