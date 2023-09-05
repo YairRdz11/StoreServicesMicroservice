@@ -26,7 +26,8 @@ namespace StoreService.Api.Autor.Application
                 {
                     Name = request.Name,
                     LastName = request.LastName,
-                    Birthdate = request.Birthdate
+                    Birthdate = request.Birthdate,
+                    AutorBookGuid = Guid.NewGuid().ToString()
                 };
                 try
                 {
