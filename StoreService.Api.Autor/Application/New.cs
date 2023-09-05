@@ -1,4 +1,6 @@
 ﻿using MediatR;
+using StoreService.Api.Autor.Models;
+using StoreService.Api.Autor.Persistent;
 
 namespace StoreService.Api.Autor.Application
 {
@@ -13,9 +15,29 @@ namespace StoreService.Api.Autor.Application
 
         public class Handler : IRequestHandler<Execute>
         {
-            public Task Handle(Execute request, CancellationToken cancellationToken)
+            public readonly AutorContext _context;
+            public Handler(AutorContext context)
             {
-                throw new NotImplementedException();
+                _context = context;
+            }
+            public async Task Handle(Execute request, CancellationToken cancellationToken)
+            {
+                var autorBook = new AutorBook
+                {
+                    Name = request.Name,
+                    LastName = request.LastName,
+                    Birthdate = request.Birthdate
+                };
+                try
+                {
+                    _context.AutorBook.Add(autorBook);
+
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
     }
