@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StoreService.Api.Autor.Application;
+using StoreService.Api.Autor.Models;
 
 namespace StoreService.Api.Autor.Controllers
 {
@@ -20,6 +21,12 @@ namespace StoreService.Api.Autor.Controllers
         public async Task Create(New.Execute data)
         {
             await _mediator.Send(data);
+        }
+
+        [HttpGet]
+        public async Task<List<AutorBook>> Get()
+        {
+            return await _mediator.Send(new Query.AutorList());
         }
     }
 }

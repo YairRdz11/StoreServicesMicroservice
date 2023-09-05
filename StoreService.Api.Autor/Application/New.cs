@@ -15,7 +15,7 @@ namespace StoreService.Api.Autor.Application
 
         public class Handler : IRequestHandler<Execute>
         {
-            public readonly AutorContext _context;
+            private readonly AutorContext _context;
             public Handler(AutorContext context)
             {
                 _context = context;
