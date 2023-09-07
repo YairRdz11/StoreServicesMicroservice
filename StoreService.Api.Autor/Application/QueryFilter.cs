@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using StoreService.Api.Autor.Models;
 using StoreService.Api.Autor.Persistent;
@@ -7,17 +8,22 @@ namespace StoreService.Api.Autor.Application
 {
     public class QueryFilter
     {
-        public class AutorUnique : IRequest<AutorBook>
+        public class AutorUnique : IRequest<AutorDTO>
         {
             public string AutorBookGuid { get; set; }
         }
 
-        public class Handler : IRequestHandler<AutorUnique, AutorBook>
+        public class Handler : IRequestHandler<AutorUnique, AutorDTO>
         {
             private readonly AutorContext _context;
+            private readonly IMapper _mapper;
 
-            public Handler(AutorContext context) { _context = context; }
-            public async Task<AutorBook> Handle(AutorUnique request, CancellationToken cancellationToken)
+            public Handler(AutorContext context, IMapper mapper) 
+            { 
+                _context = context;
+                _mapper = mapper;
+            }
+            public async Task<AutorDTO> Handle(AutorUnique request, CancellationToken cancellationToken)
             {
                 if (string.IsNullOrEmpty(request.AutorBookGuid))
                 {
@@ -31,7 +37,9 @@ namespace StoreService.Api.Autor.Application
                     throw new ArgumentNullException($"Autor not found");
                 }
 
-                return autor;
+                var autorDTO = _mapper.Map<AutorBook, AutorDTO>(autor);
+
+                return autorDTO;
             }
         }
     }

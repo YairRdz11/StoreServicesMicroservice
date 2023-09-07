@@ -23,7 +23,7 @@ namespace StoreService.Api.Autor.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<AutorBook>>> Get()
+        public async Task<ActionResult<List<AutorDTO>>> Get()
         {
             try
             {
@@ -36,7 +36,7 @@ namespace StoreService.Api.Autor.Controllers
         }
 
         [HttpGet("{guidId}")]
-        public async Task<ActionResult<AutorBook>> Get(string guid)
+        public async Task<ActionResult<AutorDTO>> Get(string guid)
         {
             try
             {
