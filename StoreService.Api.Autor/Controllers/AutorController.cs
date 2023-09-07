@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using StoreService.Api.Autor.Application;
-using StoreService.Api.Autor.Models;
 
 namespace StoreService.Api.Autor.Controllers
 {
