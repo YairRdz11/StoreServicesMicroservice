@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using StoreService.Api.Autor.Models;
 using StoreService.Api.Autor.Persistent;
 
@@ -11,6 +12,15 @@ namespace StoreService.Api.Autor.Application
             public string Name { get; set; }
             public string LastName { get; set; }
             public DateTime? Birthdate { get; set; }
+        }
+
+        public class ExecuteValidation : AbstractValidator<Execute>
+        {
+            public ExecuteValidation()
+            {
+                RuleFor(x => x.Name).NotEmpty();
+                RuleFor(x => x.LastName).NotEmpty();
+            }
         }
 
         public class Handler : IRequestHandler<Execute>

@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using StoreService.Api.Autor.Application;
 using StoreService.Api.Autor.Persistent;
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<New>());
 builder.Services.AddDbContext<AutorContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnection"));
