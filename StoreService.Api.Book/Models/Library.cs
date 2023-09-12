@@ -2,7 +2,7 @@
 {
     public class Library
     {
-        public Guid? BookId { get; set; }
+        public Guid? LibraryId { get; set; }
         public string Title { get; set; }
         public DateTime PublishDate { get; set; }
         public Guid AutorBook { get; set; }
