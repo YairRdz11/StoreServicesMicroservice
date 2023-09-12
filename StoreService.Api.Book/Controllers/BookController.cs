@@ -26,5 +26,18 @@ namespace StoreService.Api.Book.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<List<BookDTO>>> Get()
+        {
+            try { 
+                var books = await _mediator.Send(new Query.Execute());
+                return Ok(books);
+            }
+            catch 
+            {
+                return BadRequest();
+            }
+        }
     }
 }

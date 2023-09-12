@@ -14,6 +14,7 @@ builder.Services.AddDbContext<BookContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DatabaseConnection"));
 });
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
+builder.Services.AddAutoMapper(typeof(Query.Execute));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
