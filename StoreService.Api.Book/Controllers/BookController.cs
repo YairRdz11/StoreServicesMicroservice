@@ -39,5 +39,24 @@ namespace StoreService.Api.Book.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BookDTO>> Get(Guid id)
+        {
+            try
+            {
+                var book = await _mediator.Send(new QueryFilter.BookUnique { BookId = id});
+                return Ok(book);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return NotFound(ex);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+            
+        }
     }
 }
