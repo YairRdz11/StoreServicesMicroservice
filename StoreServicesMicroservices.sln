@@ -5,7 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreService.Api.Autor", "StoreService.Api.Autor\StoreService.Api.Autor.csproj", "{AF87AC4D-0313-4BEB-9844-27B9B9799D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreService.Api.Book", "StoreService.Api.Book\StoreService.Api.Book.csproj", "{C03F6947-1352-4C88-8DC4-9A5681592D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreService.Api.Book", "StoreService.Api.Book\StoreService.Api.Book.csproj", "{C03F6947-1352-4C88-8DC4-9A5681592D25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreService.Api.ShoppingCart", "StoreService.Api.ShoppingCart\StoreService.Api.ShoppingCart.csproj", "{DF2DB25A-7EA0-4833-A3A3-E7CBD26416FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{C03F6947-1352-4C88-8DC4-9A5681592D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C03F6947-1352-4C88-8DC4-9A5681592D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C03F6947-1352-4C88-8DC4-9A5681592D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF2DB25A-7EA0-4833-A3A3-E7CBD26416FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF2DB25A-7EA0-4833-A3A3-E7CBD26416FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF2DB25A-7EA0-4833-A3A3-E7CBD26416FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF2DB25A-7EA0-4833-A3A3-E7CBD26416FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
