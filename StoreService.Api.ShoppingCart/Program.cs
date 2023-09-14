@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using StoreService.Api.ShoppingCart.Persistant;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddDbContext<ShoppingCartContext>(option =>
 {
     option.UseMySQL(builder.Configuration.GetConnectionString("DatabaseConnection"));
 });
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
