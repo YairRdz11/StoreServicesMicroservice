@@ -29,5 +29,18 @@ namespace StoreService.Api.ShoppingCart.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpGet("id")]
+        public async Task<ActionResult<ShoppingCartDTO>> Get(int id)
+        {
+            try
+            {
+                var shoppingCart = await _mediator.Send(new Query.Execute { shoppingSessionId = id });
+                return Ok(shoppingCart);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }
